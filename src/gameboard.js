@@ -18,6 +18,7 @@ function Gameboard() {
   function receiveAttack(x, y) {
     if (this.board[x][y] !== ".") {
       this.board[x][y].hit();
+      //this.board[x][y] = "o";
     } else {
       this.board[x][y] = "x";
     }

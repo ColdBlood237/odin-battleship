@@ -13,8 +13,8 @@ test("Computer attacks Player at a random position", () => {
   testCpt.computerAttack(testPlayer);
   let playerAttacked = false;
   for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 0; j++) {
-      if (testCpt.computerBoard.board[i][j] == "x") playerAttacked = true;
+    for (let j = 0; j < 10; j++) {
+      if (testPlayer.gameBoard.board[i][j] == "x") playerAttacked = true;
     }
   }
   expect(playerAttacked).toBeTruthy();
