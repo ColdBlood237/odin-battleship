@@ -18,7 +18,7 @@ test("Hit the ship at coordinates (1,3)", () => {
   const testBoard = Gameboard();
   testBoard.placeShip(1, 1, 3);
   testBoard.receiveAttack(1, 3);
-  expect(testBoard.board[3][1]).toMatch("o");
+  expect(testBoard.board[3][1].hits).toBe(1);
 });
 
 test("Hit the ocean at coordinates (2,3)", () => {

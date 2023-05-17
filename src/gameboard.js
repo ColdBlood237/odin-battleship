@@ -2,6 +2,7 @@ import Ship from "./ship";
 
 function Gameboard() {
   const board = [];
+  const shotsHit = [];
   for (let i = 0; i < 10; i++) {
     board.push(Array(10).fill("."));
   }
@@ -18,7 +19,7 @@ function Gameboard() {
   function receiveAttack(x, y) {
     if (this.board[y][x] !== ".") {
       this.board[y][x].hit();
-      this.board[y][x] = "o";
+      shotsHit.push({ x, y });
     } else {
       this.board[y][x] = "x";
     }
@@ -36,7 +37,7 @@ function Gameboard() {
     return allSunk;
   }
 
-  return { board, placeShip, receiveAttack, allSunk };
+  return { board, shotsHit, placeShip, receiveAttack, allSunk };
 }
 
 export default Gameboard;
