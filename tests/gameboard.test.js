@@ -9,21 +9,19 @@ test("Gameboard is a 10x10 matrix", () => {
 });
 
 test("Place a ship at coordinates (1,3)", () => {
-  const testShip = Ship(1);
   const testBoard = Gameboard();
-  testBoard.placeShip(testShip, 1, 3);
-  expect(testBoard.board[1][3]).toBe(testShip);
+  testBoard.placeShip(1, 1, 3);
+  expect(JSON.stringify(testBoard.board[1][3])).toBe(JSON.stringify(Ship(1)));
 });
 
-test("Hit the ship at coodinates (1,3)", () => {
-  const testShip = Ship(1);
+test("Hit the ship at coordinates (1,3)", () => {
   const testBoard = Gameboard();
-  testBoard.placeShip(testShip, 1, 3);
+  testBoard.placeShip(1, 1, 3);
   testBoard.receiveAttack(1, 3);
-  expect(testShip.hits).toBe(1);
+  expect(testBoard.board[1][3].hits).toBe(1);
 });
 
-test("Hit the ocean at coodinates (2,3)", () => {
+test("Hit the ocean at coordinates (2,3)", () => {
   const testBoard = Gameboard();
   testBoard.receiveAttack(2, 3);
   expect(testBoard.board[2][3]).toMatch("x");

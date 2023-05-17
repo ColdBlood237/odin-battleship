@@ -7,10 +7,10 @@ function Gameboard() {
   }
 
   // place ship horizontally
-  function placeShip(ship, x, y) {
-    if (ship.length + x < 10 && x >= 0 && y >= 0 && y < 10) {
-      for (let i = x; i < x + ship.length; i++) {
-        this.board[i][y] = ship;
+  function placeShip(shipLength, x, y) {
+    if (shipLength + x < 10 && x >= 0 && y >= 0 && y < 10) {
+      for (let i = x; i < x + shipLength; i++) {
+        this.board[i][y] = Ship(shipLength);
       }
     }
   }
