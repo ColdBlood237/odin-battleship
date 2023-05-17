@@ -1,10 +1,10 @@
-import { Player, Computer } from "../src/player";
+import { Player, Computer } from "../src/players";
 
 test("Player attacks computer at position (1,3)", () => {
   const testPlayer = Player();
   const testCpt = Computer();
   testPlayer.playerAttack(testCpt, 1, 3);
-  expect(testCpt.computerBoard.board[1][3]).toMatch("x");
+  expect(testCpt.computerBoard.board[3][1]).toMatch("x");
 });
 
 test("Computer attacks Player at a random position", () => {

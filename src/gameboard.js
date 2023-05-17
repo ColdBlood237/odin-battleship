@@ -10,17 +10,17 @@ function Gameboard() {
   function placeShip(shipLength, x, y) {
     if (shipLength + x < 10 && x >= 0 && y >= 0 && y < 10) {
       for (let i = x; i < x + shipLength; i++) {
-        this.board[i][y] = Ship(shipLength);
+        this.board[y][i] = Ship(shipLength);
       }
     }
   }
 
   function receiveAttack(x, y) {
-    if (this.board[x][y] !== ".") {
-      this.board[x][y].hit();
-      //this.board[x][y] = "o";
+    if (this.board[y][x] !== ".") {
+      this.board[y][x].hit();
+      this.board[y][x] = "o";
     } else {
-      this.board[x][y] = "x";
+      this.board[y][x] = "x";
     }
   }
 
