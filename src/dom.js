@@ -10,16 +10,16 @@ function renderBoards(player, computer) {
       const currSquare = player.gameBoard.board[y][x];
       const squareDiv = document.createElement("div");
       squareDiv.classList.add(`(${x},${y})`);
-      // if a boat
-      if (currSquare !== "." && currSquare !== "x" && currSquare !== "o") {
-        squareDiv.classList.add("boat");
-      }
       // if shot hit
-      else if (
+      if (
         player.gameBoard.shotsHit.filter((e) => e[0] === x && e[1] === y)
           .length !== 0
       ) {
         squareDiv.classList.add("hit");
+      }
+      // if a boat
+      else if (currSquare !== "." && currSquare !== "x" && currSquare !== "o") {
+        squareDiv.classList.add("boat");
       }
       // if shot missed
       else if (currSquare === "x") {
