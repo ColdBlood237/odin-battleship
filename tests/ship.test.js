@@ -20,7 +20,9 @@ test("Ship not sunk", () => {
 });
 
 test("Ship sunk", () => {
-  const testShip = Ship(1);
+  const testShip = Ship(3);
+  testShip.hit();
+  testShip.hit();
   testShip.hit();
   expect(testShip.isSunk()).toBeTruthy();
 });

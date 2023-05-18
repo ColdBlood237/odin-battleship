@@ -10,8 +10,9 @@ function Gameboard() {
   // place ship horizontally
   function placeShip(shipLength, x, y) {
     if (shipLength + x < 10 && x >= 0 && y >= 0 && y < 10) {
+      const newShip = Ship(shipLength);
       for (let i = x; i < x + shipLength; i++) {
-        this.board[y][i] = Ship(shipLength);
+        this.board[y][i] = newShip;
       }
     }
   }
@@ -26,10 +27,14 @@ function Gameboard() {
   }
 
   function allSunk() {
-    const allSunk = true;
-    for (let i = 0; i < 10; i++) {
-      for (let j = 0; j < 10; j++) {
-        if (board[i][j] !== "." && board[i][j] !== "x" && !board[i][j].isSunk) {
+    let allSunk = true;
+    for (let y = 0; y < 10; y++) {
+      for (let x = 0; x < 10; x++) {
+        if (
+          board[y][x] !== "." &&
+          board[y][x] !== "x" &&
+          !board[y][x].isSunk()
+        ) {
           allSunk = false;
         }
       }

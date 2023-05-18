@@ -28,9 +28,11 @@ test("Hit the ocean at coordinates (2,3)", () => {
 });
 
 test("All the ships have been sunk", () => {
-  const testShip = Ship(1);
   const testBoard = Gameboard();
-  testBoard.placeShip(testShip, 1, 3);
+  testBoard.placeShip(2, 1, 3);
+  testBoard.placeShip(1, 0, 2);
   testBoard.receiveAttack(1, 3);
+  testBoard.receiveAttack(2, 3);
+  testBoard.receiveAttack(0, 2);
   expect(testBoard.allSunk()).toBeTruthy();
 });

@@ -63,6 +63,10 @@ function renderBoards(player, computer) {
 // change the square to green for missed shot
 // or to red for hit shot
 
-function handleClick(e) {}
+function handleClick(e, player, enemy) {
+  const x = e.target.classList[0].charAt(1);
+  const y = e.target.classList[0].charAt(3);
+  player.playerAttack(enemy, x, y);
+}
 
 export { renderBoards };
