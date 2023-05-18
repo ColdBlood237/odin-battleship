@@ -4,9 +4,7 @@ function Player() {
   const gameBoard = Gameboard();
 
   function playerAttack(enemy, x, y) {
-    if (enemy.computerBoard.board[x][y] == ".") {
-      enemy.computerBoard.receiveAttack(x, y);
-    }
+    enemy.computerBoard.receiveAttack(x, y);
   }
 
   return { gameBoard, playerAttack };

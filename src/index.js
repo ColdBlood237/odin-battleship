@@ -17,4 +17,14 @@ Asus.computerBoard.placeShip(3, 1, 4);
 Asus.computerBoard.placeShip(3, 1, 6);
 Asus.computerBoard.placeShip(2, 1, 8);
 
+// for (let i = 0; i < 10; i++) {
+//   for (let j = 0; j < 10; j++) {
+//     Ryan.playerAttack(Asus, i, j);
+//   }
+// }
+
+console.log(Asus.computerBoard.shotsHit);
+
 renderBoards(Ryan, Asus);
+
+while (!Ryan.gameBoard.allSunk && !Asus.computerBoard.allSunk) {}

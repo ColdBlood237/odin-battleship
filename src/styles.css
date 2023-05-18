@@ -32,7 +32,19 @@ body {
   border: black 1px solid;
 }
 
-.water:hover {
+.computer-board .water:hover {
   background-color: #dddddd;
   cursor: pointer;
+}
+
+.boat {
+  background-color: #444444;
+}
+
+.missed {
+  background-color: #85ffb3;
+}
+
+.hit {
+  background-color: #ff8585;
 }

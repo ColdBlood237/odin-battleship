@@ -19,7 +19,7 @@ function Gameboard() {
   function receiveAttack(x, y) {
     if (this.board[y][x] !== ".") {
       this.board[y][x].hit();
-      shotsHit.push({ x, y });
+      this.shotsHit.push([x, y]);
     } else {
       this.board[y][x] = "x";
     }

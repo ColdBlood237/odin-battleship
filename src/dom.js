@@ -5,49 +5,54 @@ function renderBoards(player, computer) {
   playerBoardDiv.classList.add("player-board", "board");
   computerBoardDiv.classList.add("computer-board", "board");
 
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      const currSquare = player.gameBoard.board[i][j];
+  for (let y = 0; y < 10; y++) {
+    for (let x = 0; x < 10; x++) {
+      const currSquare = player.gameBoard.board[y][x];
       const squareDiv = document.createElement("div");
+      squareDiv.classList.add(`(${x},${y})`);
       // if a boat
-      if (currSquare !== "." && currSquare !== "x" && currSquare !== "o")
-        squareDiv.style.backgroundColor = "#444444";
-      // if a missed shot
-      else if (currSquare === "x") squareDiv.style.backgroundColor = "#85ffb3";
-      else squareDiv.classList.add("water");
+      if (currSquare !== "." && currSquare !== "x" && currSquare !== "o") {
+        squareDiv.classList.add("boat");
+      }
+      // if shot hit
+      else if (
+        player.gameBoard.shotsHit.filter((e) => e[0] === x && e[1] === y)
+          .length !== 0
+      ) {
+        squareDiv.classList.add("hit");
+      }
+      // if shot missed
+      else if (currSquare === "x") {
+        squareDiv.classList.add("missed");
+      }
+      // nothing just water
+      else {
+        squareDiv.classList.add("water");
+      }
       playerBoardDiv.appendChild(squareDiv);
     }
   }
 
-  for (let i = 0; i < player.gameBoard.shotsHit.length; i++) {
-    const position =
-      player.gameBoard.shotsHit[i].x * player.gameBoard.shotsHit[i].y;
-    document.querySelector(
-      `.player-board :nth-child(${position})`
-    ).style.backgroundColor = "#ff8585";
-  }
-
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      const currSquare = computer.computerBoard.board[i][j];
+  for (let y = 0; y < 10; y++) {
+    for (let x = 0; x < 10; x++) {
+      const currSquare = computer.computerBoard.board[y][x];
+      //console.log(currSquare, `(${x},${y})`);
       const squareDiv = document.createElement("div");
-      // if a boat
-      if (currSquare !== "." && currSquare !== "x" && currSquare !== "o")
-        squareDiv.style.backgroundColor = "#444444";
-      // if a missed shot
-      else if (currSquare === "x") squareDiv.style.backgroundColor = "#85ffb3";
-      else squareDiv.classList.add("water");
+      squareDiv.classList.add(`(${x},${y})`);
+
+      if (currSquare === "x") {
+        squareDiv.classList.add("missed");
+      } else if (
+        computer.computerBoard.shotsHit.filter((e) => e[0] === x && e[1] === y)
+          .length !== 0
+      ) {
+        squareDiv.classList.add("hit");
+      } else {
+        squareDiv.classList.add("water");
+      }
+
       computerBoardDiv.appendChild(squareDiv);
     }
-  }
-
-  for (let i = 0; i < computer.computerBoard.shotsHit.length; i++) {
-    const position =
-      computer.computerBoard.shotsHit[i].x *
-      computer.computerBoard.shotsHit[i].y;
-    document.querySelector(
-      `.computer-board :nth-child(${position})`
-    ).style.backgroundColor = "#ff8585";
   }
 
   boardsDiv.append(playerBoardDiv, computerBoardDiv);
@@ -57,5 +62,7 @@ function renderBoards(player, computer) {
 // if the click is on the water
 // change the square to green for missed shot
 // or to red for hit shot
+
+function handleClick(e) {}
 
 export { renderBoards };
