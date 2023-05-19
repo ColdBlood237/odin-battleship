@@ -8,6 +8,7 @@
 }
 
 body {
+  font-family: sans-serif;
   margin: 0;
   height: 100vh;
   background-color: #eeeeee;
@@ -66,7 +67,7 @@ body {
   height: 250px;
   background-color: var(--bg-color);
   border-radius: 8px;
-  box-shadow: 0px 0px 5px 100vh rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 5px 100vh rgba(0, 0, 0, 0.5);
   display: none;
   flex-direction: column;
   align-items: center;
@@ -86,5 +87,57 @@ body {
   font-size: 3rem;
   border-radius: inherit;
   padding: 5px;
+  cursor: pointer;
+}
+
+.starting-screen {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 90vh / 2);
+  width: 450px;
+  height: 90vh;
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 100vh rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.welcome-msg {
+  font-size: 1.5rem;
+  margin-bottom: 32px;
+}
+
+.setup-msg {
+  font-size: 1.3rem;
+  margin-bottom: 32px;
+}
+
+#setup-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  width: 100%;
+  font-size: 1.1rem;
+  gap: 8px;
+}
+
+#setup-form > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="submit"] {
+  align-self: center;
+  position: absolute;
+  bottom: 10%;
+  background-color: black;
+  color: var(--bg-color);
+  width: 70%;
+  font-size: 1.3rem;
+  border-radius: 8px;
   cursor: pointer;
 }

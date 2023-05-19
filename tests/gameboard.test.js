@@ -14,6 +14,12 @@ test("Place a ship at coordinates (1,3)", () => {
   expect(JSON.stringify(testBoard.board[3][1])).toBe(JSON.stringify(Ship(1)));
 });
 
+test("Can't place a ship at coordinates (0,3) over an other one", () => {
+  const testBoard = Gameboard();
+  testBoard.placeShip(1, 1, 3);
+  expect(testBoard.placeShip(3, 0, 3)).toBeFalsy();
+});
+
 test("Hit the ship at coordinates (1,3)", () => {
   const testBoard = Gameboard();
   testBoard.placeShip(1, 1, 3);

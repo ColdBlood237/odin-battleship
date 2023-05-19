@@ -59,11 +59,6 @@ function renderBoards(player, computer) {
   boardsDiv.append(playerBoardDiv, computerBoardDiv);
 }
 
-// create a function that handles the clicks on the board
-// if the click is on the water
-// change the square to green for missed shot
-// or to red for hit shot
-
 function handleClick(e, player, enemy) {
   const x = parseInt(e.target.classList[0].charAt(1));
   const y = parseInt(e.target.classList[0].charAt(3));
@@ -87,4 +82,27 @@ function removeWinScreen() {
   winnerScreen.style.display = "none";
 }
 
-export { renderBoards, handleClick, renderWinScreen, removeWinScreen };
+function closeStartingScreen() {
+  const startingScreen = document.querySelector(".starting-screen");
+  startingScreen.style.display = "none";
+}
+
+function renderStartingScreen() {
+  const startingScreen = document.querySelector(".starting-screen");
+  startingScreen.style.display = "flex";
+}
+
+function hideBoards() {
+  const boards = document.querySelector(".boards");
+  boards.innerHTML = "";
+}
+
+export {
+  renderBoards,
+  handleClick,
+  renderWinScreen,
+  removeWinScreen,
+  renderStartingScreen,
+  closeStartingScreen,
+  hideBoards,
+};

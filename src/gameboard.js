@@ -9,11 +9,22 @@ function Gameboard() {
 
   // place ship horizontally
   function placeShip(shipLength, x, y) {
+    // check if the boat coordinates are in range
     if (shipLength + x < 10 && x >= 0 && y >= 0 && y < 10) {
+      // check if there is space for the new boat (it won't overlap another one)
+      for (let i = x; i < x + shipLength; i++) {
+        if (typeof this.board[y][i] === "object") {
+          return false;
+        }
+      }
+
       const newShip = Ship(shipLength);
       for (let i = x; i < x + shipLength; i++) {
         this.board[y][i] = newShip;
       }
+      return true;
+    } else {
+      return false;
     }
   }
 
