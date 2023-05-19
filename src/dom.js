@@ -1,5 +1,6 @@
 function renderBoards(player, computer) {
   const boardsDiv = document.querySelector(".boards");
+  boardsDiv.innerHTML = "";
   const playerBoardDiv = document.createElement("div");
   const computerBoardDiv = document.createElement("div");
   playerBoardDiv.classList.add("player-board", "board");
@@ -64,9 +65,26 @@ function renderBoards(player, computer) {
 // or to red for hit shot
 
 function handleClick(e, player, enemy) {
-  const x = e.target.classList[0].charAt(1);
-  const y = e.target.classList[0].charAt(3);
+  const x = parseInt(e.target.classList[0].charAt(1));
+  const y = parseInt(e.target.classList[0].charAt(3));
   player.playerAttack(enemy, x, y);
+  enemy.computerAttack(player);
 }
 
-export { renderBoards };
+function renderWinScreen(player, enemy) {
+  const winnerScreen = document.querySelector(".winner-screen");
+  const winnerMsg = document.querySelector(".winner-msg");
+  if (player.gameBoard.allSunk()) {
+    winnerMsg.innerHTML = "Computer Won !";
+  } else {
+    winnerMsg.innerHTML = "You Won !";
+  }
+  winnerScreen.style.display = "flex";
+}
+
+function removeWinScreen() {
+  const winnerScreen = document.querySelector(".winner-screen");
+  winnerScreen.style.display = "none";
+}
+
+export { renderBoards, handleClick, renderWinScreen, removeWinScreen };
