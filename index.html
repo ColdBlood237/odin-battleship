@@ -11,6 +11,56 @@
     <body>
         <h1 class="game-title">B A T T L E S H I P</h1>
         <div class="boards"></div>
+
+        <div class="starting-screen">
+            <span class="welcome-msg"><strong>Welcome to battleship game</strong></span>
+            <span class="setup-msg">Setup your army</span>
+            <form action="" id="setup-form">
+                <div>
+                    <label>Place your carrier: </label>
+                    <div>
+                        <span>x = </span><input value="2" type="number" name="" id="carrier-x" min="0" max="4" required>
+                        <span>y = </span><input value="0" type="number" name="" id="carrier-y" min="0" max="9" required>
+                    </div>
+                </div>
+                <div>
+                    <label>Place your battleship: </label>
+                    <div>
+                        <span>x = </span><input value="2" type="number" name="" id="battleship-x" min="0" max="5"
+                            required>
+                        <span>y = </span><input value="2" type="number" name="" id="battleship-y" min="0" max="9"
+                            required>
+                    </div>
+                </div>
+                <div>
+                    <label>Place your destroyer: </label>
+                    <div>
+                        <span>x = </span><input value="2" type="number" name="" id="destroyer-x" min="0" max="6"
+                            required>
+                        <span>y = </span><input value="4" type="number" name="" id="destroyer-y" min="0" max="9"
+                            required>
+                    </div>
+                </div>
+                <div>
+                    <label>Place your submarine: </label>
+                    <div>
+                        <span>x = </span><input value="2" type="number" name="" id="submarine-x" min="0" max="6"
+                            required>
+                        <span>y = </span><input value="6" type="number" name="" id="submarine-y" min="0" max="9"
+                            required>
+                    </div>
+                </div>
+                <div>
+                    <label>Place your patrol boat: </label>
+                    <div>
+                        <span>x = </span><input value="2" type="number" name="" id="patrol-x" min="0" max="7" required>
+                        <span>y = </span><input value="8" type="number" name="" id="patrol-y" min="0" max="9" required>
+                    </div>
+                </div>
+
+                <input type="submit" value="Start">
+            </form>
+        </div>
         <div class="winner-screen">
             <span class="winner-msg"></span>
             <button class="restart-btn">Play again</button>
