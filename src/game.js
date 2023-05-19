@@ -7,21 +7,17 @@ import {
 import { Computer, Player } from "./players";
 
 function game() {
-  // add an event listner on setup form that will
-  // take all the input values and call placeship
-  // with them
-
   const Ryan = Player();
   const Asus = Computer();
 
   const setupForm = document.querySelector("#setup-form");
-  const startBtn = document.querySelector("#start-btn");
   setupForm.onsubmit = (e) => {
     e.preventDefault();
     Ryan.initializeBoard();
     Asus.initializeBoard();
     closeStartingScreen();
     renderBoards(Ryan, Asus);
+    setupForm.reset();
   };
 
   let gameOver = false;

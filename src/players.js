@@ -50,12 +50,51 @@ function Player() {
 
 function Computer() {
   const computerBoard = Gameboard();
+  let prevHit = false;
+  let gottaCheckOtherSide = false;
+  let prevX;
+  let prevY;
 
   function computerAttack(enemy) {
     let x;
     let y;
     let valid = false;
-    do {
+
+    breakme: if (prevHit) {
+      if (
+        enemy.gameBoard.board[prevY][prevX - 1] === "." ||
+        typeof enemy.gameBoard.board[prevY][prevX - 1] == "object"
+      ) {
+        x = prevX - 1;
+        y = prevY;
+        valid = true;
+        console.log(x, y);
+      } else if (
+        enemy.gameBoard.board[prevY][prevX + 1] === "." ||
+        typeof enemy.gameBoard.board[prevY][prevX + 1] == "object"
+      ) {
+        x = prevX + 1;
+        y = prevY;
+        valid = true;
+      }
+      if (typeof enemy.gameBoard.board[y][x] == "object") {
+        if (
+          enemy.gameBoard.shotsHit.filter((e) => e[0] === x && e[1] === y)
+            .length !== 0
+        ) {
+          valid = false;
+          break breakme;
+        }
+        prevHit = true;
+        prevX = x;
+        prevY = y;
+      } else {
+        prevHit = false;
+        gottaCheckOtherSide = true;
+      }
+    }
+
+    while (!valid) {
       x = Math.floor(Math.random() * 10);
       y = Math.floor(Math.random() * 10);
       // if the target is water
@@ -70,9 +109,12 @@ function Computer() {
             .length === 0
         ) {
           valid = true;
+          prevHit = true;
+          prevX = x;
+          prevY = y;
         }
       }
-    } while (!valid);
+    }
     enemy.gameBoard.receiveAttack(x, y);
   }
 
