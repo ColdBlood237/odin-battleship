@@ -7,7 +7,45 @@ function Player() {
     enemy.computerBoard.receiveAttack(x, y);
   }
 
-  return { gameBoard, playerAttack };
+  function initializeBoard(e) {
+    const carrierXInput = document.querySelector("#carrier-x");
+    const carrierYInput = document.querySelector("#carrier-y");
+
+    const battleshipXInput = document.querySelector("#battleship-x");
+    const battleshipYInput = document.querySelector("#battleship-y");
+
+    const destroyerXInput = document.querySelector("#destroyer-x");
+    const destroyerYInput = document.querySelector("#destroyer-y");
+
+    const submarineXInput = document.querySelector("#submarine-x");
+    const submarineYInput = document.querySelector("#submarine-y");
+
+    const patrolXInput = document.querySelector("#patrol-x");
+    const patrolYInput = document.querySelector("#patrol-y");
+
+    const carrierX = parseInt(carrierXInput.value);
+    const carrierY = parseInt(carrierYInput.value);
+
+    const battleshipX = parseInt(battleshipXInput.value);
+    const battleshipY = parseInt(battleshipYInput.value);
+
+    const destroyerX = parseInt(destroyerXInput.value);
+    const destroyerY = parseInt(destroyerYInput.value);
+
+    const submarineX = parseInt(submarineXInput.value);
+    const submarineY = parseInt(submarineYInput.value);
+
+    const patrolX = parseInt(patrolXInput.value);
+    const patrolY = parseInt(patrolYInput.value);
+
+    this.gameBoard.placeShip(5, carrierX, carrierY);
+    this.gameBoard.placeShip(4, battleshipX, battleshipY);
+    this.gameBoard.placeShip(3, destroyerX, destroyerY);
+    this.gameBoard.placeShip(3, submarineX, submarineY);
+    this.gameBoard.placeShip(2, patrolX, patrolY);
+  }
+
+  return { gameBoard, playerAttack, initializeBoard };
 }
 
 function Computer() {
@@ -38,7 +76,54 @@ function Computer() {
     enemy.gameBoard.receiveAttack(x, y);
   }
 
-  return { computerBoard, computerAttack };
+  function initializeBoard() {
+    let carrierPlaced = false;
+    do {
+      carrierPlaced = this.computerBoard.placeShip(
+        5,
+        Math.floor(Math.random() * 5),
+        Math.floor(Math.random() * 10)
+      );
+    } while (!carrierPlaced);
+
+    let battleshipPlaced = false;
+    do {
+      battleshipPlaced = this.computerBoard.placeShip(
+        4,
+        Math.floor(Math.random() * 6),
+        Math.floor(Math.random() * 10)
+      );
+    } while (!battleshipPlaced);
+
+    let destroyerPlaced = false;
+    do {
+      destroyerPlaced = this.computerBoard.placeShip(
+        3,
+        Math.floor(Math.random() * 7),
+        Math.floor(Math.random() * 10)
+      );
+    } while (!destroyerPlaced);
+
+    let submarinePlaced = false;
+    do {
+      submarinePlaced = this.computerBoard.placeShip(
+        3,
+        Math.floor(Math.random() * 7),
+        Math.floor(Math.random() * 10)
+      );
+    } while (!submarinePlaced);
+
+    let patrolPlaced = false;
+    do {
+      patrolPlaced = this.computerBoard.placeShip(
+        2,
+        Math.floor(Math.random() * 8),
+        Math.floor(Math.random() * 10)
+      );
+    } while (!patrolPlaced);
+  }
+
+  return { computerBoard, computerAttack, initializeBoard };
 }
 
 export { Player, Computer };
